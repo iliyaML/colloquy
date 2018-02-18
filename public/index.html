@@ -12,7 +12,8 @@
     <style>
         body {
             padding-top: 25px;
-        } 
+        }
+
         #chat-window {
             height: 300px;
         }
@@ -23,7 +24,9 @@
             border-radius: 0 !important;
         }
 
-        #feedback { padding: 10px; }
+        #feedback {
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -40,6 +43,9 @@
                 <input class="btn btn-block btn-primary" type="submit" id="send" value="Send">
             </div>
         </form>
+        <p class="text-center">
+            <a href="/" target="_blank">Open in another tab</a>
+        </p>
     </div>
     <script>
         const socket = io();
