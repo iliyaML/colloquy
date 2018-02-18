@@ -5,23 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LiveChat</title>
+    <title>Colloquy</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <link rel="stylesheet" href="/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 25px;
+        } 
+        #chat-window {
+            height: 300px;
+        }
+
+        .card,
+        .list-group-item,
+        input {
+            border-radius: 0 !important;
+        }
+
+        #feedback { padding: 10px; }
+    </style>
 </head>
 
 <body>
-    <form id="livechat">
-        <div id="mario-chat">
-            <div id="chat-window">
-                <div id="output"></div>
-                <div id="feedback"></div>
+    <div class="container">
+        <form id="livechat">
+            <div id="mario-chat" class="card">
+                <div id="chat-window">
+                    <ul id="output" class="list-group"></ul>
+                    <div id="feedback"></div>
+                </div>
+                <input class="form-control" type="text" id="handle" placeholder="Enter name...">
+                <input class="form-control" type="text" id="message" placeholder="Enter message...">
+                <input class="btn btn-block btn-primary" type="submit" id="send" value="Send">
             </div>
-            <input type="text" id="handle" placeholder="Enter name...">
-            <input type="text" id="message" placeholder="Enter message...">
-            <button type="submit" id="send">Send</button>
-        </div>
-    </form>
+        </form>
+    </div>
     <script>
         const socket = io();
 
@@ -46,11 +65,11 @@
 
         socket.on('chat', (data) => {
             feedback.innerHTML = "";
-            output.innerHTML += `<p><storng>${data.handle}</strong>: ${data.message}</p>`;
+            output.innerHTML += `<li class="list-group-item"><storng>${data.handle}</strong>: ${data.message}</li>`;
         });
 
         socket.on('typing', (data) => {
-            feedback.innerHTML = `<p><em>${data} is typing a message...</em></p>`;
+            feedback.innerHTML = `<em>${data} is typing a message...</em>`;
         });
     </script>
 </body>
