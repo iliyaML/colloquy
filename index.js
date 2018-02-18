@@ -7,7 +7,7 @@ const server = app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 
-app.use(path.join(__dirname, 'public')));
+app.use(path.join(__dirname, 'public'));
 
 const io = require('socket.io')(server);
 
