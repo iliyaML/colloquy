@@ -65,7 +65,7 @@
 
         socket.on('chat', (data) => {
             feedback.innerHTML = "";
-            output.innerHTML += `<li class="list-group-item"><storng>${data.handle}</strong>: ${data.message}</li>`;
+            output.innerHTML += `<li class="list-group-item"><strong>${data.handle}</strong>: ${data.message}</li>`;
         });
 
         socket.on('typing', (data) => {
