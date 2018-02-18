@@ -4,7 +4,7 @@
   "description": "A simple live chat app",
   "main": "index.js",
   "scripts": {
-    "stare": "node index.js"
+    "start": "node index.js"
   },
   "author": "Iliya Mohamad Lokman",
   "license": "MIT",
