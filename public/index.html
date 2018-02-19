@@ -88,17 +88,24 @@
             message.value = '';
         });
 
-        message.addEventListener('keypress', () => {
-            socket.emit('typing', handle.value);
+        message.addEventListener('change', () => {
+            if (message.value) {
+                socket.emit('typing', handle.value);
+            } else {
+                socket.emit('typing', null);
+            }
         });
 
         socket.on('chat', (data) => {
-            feedback.innerHTML = "";
             output.innerHTML += `<li class="list-group-item"><strong>${data.handle}</strong>: ${data.message}</li>`;
         });
 
         socket.on('typing', (data) => {
-            feedback.innerHTML = `<em>${data} is typing a message...</em>`;
+            if (data) {
+                feedback.innerHTML = `<em>${data} is typing a message...</em>`;
+            } else {
+                feedback.innerHTML = "";
+            }
         });
     </script>
 </body>

@@ -1,7 +1,7 @@
 {
   "name": "colloquy",
   "version": "1.0.0",
-  "description": "A simple live chat app",
+  "description": "A simple real-time chat app",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

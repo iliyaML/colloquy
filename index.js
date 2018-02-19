@@ -18,6 +18,7 @@ io.on('connection', (socket) => {
 
     socket.on('chat', (data) => {
         io.sockets.emit('chat', data);
+        socket.broadcast.emit('typing', null);
     });
 
     socket.on('typing', (data) => {
