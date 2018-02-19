@@ -89,7 +89,7 @@
         });
 
         message.addEventListener('keydown', () => {
-            if (message.value) {
+            if (message.value.length) {
                 socket.emit('typing', handle.value);
             } else {
                 socket.emit('typing', null);
